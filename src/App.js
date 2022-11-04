@@ -1,4 +1,5 @@
 import "./App.css";
+import Data from "./components/Data";
 import Word from "./components/word";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -10,15 +11,17 @@ import React, { useState, useEffect, useRef } from "react";
 // Word = React.memo(Word);
 
 function App() {
-  const STARTING_TIME = 10;
-  const typingText = "this is the text the user types".split(" ");
+  const STARTING_TIME = 30;
+  // const typingText = "this is the text the user types".split(" ");
+
+  const typingText = Data.split(" ");
 
   // const cloud = useRef(getCloud);
 
   const [text, setText] = useState("");
+  const [speed, setSpeed] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
-  const [wordCount, setWordCount] = useState(0);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
 
@@ -44,24 +47,18 @@ function App() {
     setText(value);
   }
 
-  function calculateWordCount(text) {
-    const wordsArr = text.trim().split(" ");
-    return wordsArr.filter((word) => word !== "").length;
-  }
-
   function startGame() {
     setIsTimeRunning(true);
     setTimeRemaining(STARTING_TIME);
-    setWordCount(0);
     setActiveWordIndex(0);
     setText("");
+    setCorrectWordArray([]);
     textBoxRef.current.disabled = false;
     textBoxRef.current.focus();
   }
 
   function endGame() {
     setIsTimeRunning(false);
-    setWordCount(calculateWordCount(text));
   }
 
   useEffect(() => {
@@ -79,6 +76,7 @@ function App() {
       <h1>Typing Game</h1>
       <h4 className="timer">Time Remaining: {timeRemaining}</h4>
       <h4>Word count: {activeWordIndex}</h4>
+      <h4>Speed: {speed}</h4>
       <div className="typing_text">
         {typingText.map((word, index) => {
           return (
