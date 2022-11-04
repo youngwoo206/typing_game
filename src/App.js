@@ -7,6 +7,8 @@ import React, { useState, useEffect, useRef } from "react";
 //     .split(" ")
 //     .sort(() => (Math.random() > 0.5 ? 1 : -1));
 
+// Word = React.memo(Word);
+
 function App() {
   const STARTING_TIME = 10;
   const typingText = "this is the text the user types".split(" ");
@@ -24,17 +26,20 @@ function App() {
 
   function processInput(value) {
     if (value.endsWith(" ")) {
-      setActiveWordIndex((index) => index + 1);
       setText("");
+      setActiveWordIndex((index) => index + 1);
 
       console.log(text);
 
       setCorrectWordArray((data) => {
         const word = value.trim();
         const newResult = [...data];
+
+        //not sure what the line of code below does but fixed the issue of setText("") not working
         newResult[activeWordIndex] = word === typingText[activeWordIndex];
         return newResult;
       });
+      text.dispatchEvent(new Event("change", { bubbles: true }));
     }
     setText(value);
   }
@@ -73,7 +78,7 @@ function App() {
     <div className="App">
       <h1>Typing Game</h1>
       <h4 className="timer">Time Remaining: {timeRemaining}</h4>
-      <h4>Word count: {wordCount}</h4>
+      <h4>Word count: {activeWordIndex}</h4>
       <div className="typing_text">
         {typingText.map((word, index) => {
           return (
