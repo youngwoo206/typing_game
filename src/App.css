@@ -16,3 +16,17 @@ textarea{
     height: 25vh;
     margin-bottom: 20px;
 }
+
+.correct{
+    font-weight: bold;
+    color: green;
+}
+
+.incorrect{
+    font-weight: bold;
+    color: red;
+}
+
+.active{
+    font-weight: bold;
+}

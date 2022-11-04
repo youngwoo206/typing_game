@@ -2,21 +2,39 @@ import "./App.css";
 import Word from "./components/word";
 import React, { useState, useEffect, useRef } from "react";
 
+// const getCloud = () =>
+//   "scramble screw thaw pasture tent humor advance stroke true texture"
+//     .split(" ")
+//     .sort(() => (Math.random() > 0.5 ? 1 : -1));
+
 function App() {
   const STARTING_TIME = 10;
   const typingText = "this is the text the user types".split(" ");
+
+  // const cloud = useRef(getCloud);
 
   const [text, setText] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
+  const [correctWordArray, setCorrectWordArray] = useState([]);
+
   const textBoxRef = useRef(null);
 
   function processInput(value) {
     if (value.endsWith(" ")) {
       setActiveWordIndex((index) => index + 1);
       setText("");
+
+      console.log(text);
+
+      setCorrectWordArray((data) => {
+        const word = value.trim();
+        const newResult = [...data];
+        newResult[activeWordIndex] = word === typingText[activeWordIndex];
+        return newResult;
+      });
     }
     setText(value);
   }
@@ -58,16 +76,18 @@ function App() {
       <h4>Word count: {wordCount}</h4>
       <div className="typing_text">
         {typingText.map((word, index) => {
-          if (index === activeWordIndex) {
-            return <b>{word} </b>;
-          }
-
-          return <span>{word} </span>;
+          return (
+            <Word
+              text={word}
+              active={index === activeWordIndex}
+              correct={correctWordArray[index]}
+            />
+          );
         })}
       </div>
-      <textarea
-        onChange={(e) => processInput(e.target.value)}
+      <input
         value={text}
+        onChange={(e) => processInput(e.target.value)}
         disabled={!isTimeRunning}
         ref={textBoxRef}
       />
