@@ -1,16 +1,23 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import Word from "./components/word";
+import React, { useState, useEffect, useRef } from "react";
 
 function App() {
-  const STARTING_TIME = 5;
+  const STARTING_TIME = 10;
+  const typingText = "this is the text the user types".split(" ");
 
   const [text, setText] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [wordCount, setWordCount] = useState(0);
+  const [activeWordIndex, setActiveWordIndex] = useState(0);
+  const textBoxRef = useRef(null);
 
-  function handleChange(e) {
-    const { value } = e.target;
+  function processInput(value) {
+    if (value.endsWith(" ")) {
+      setActiveWordIndex((index) => index + 1);
+      setText("");
+    }
     setText(value);
   }
 
@@ -22,7 +29,11 @@ function App() {
   function startGame() {
     setIsTimeRunning(true);
     setTimeRemaining(STARTING_TIME);
+    setWordCount(0);
+    setActiveWordIndex(0);
     setText("");
+    textBoxRef.current.disabled = false;
+    textBoxRef.current.focus();
   }
 
   function endGame() {
@@ -44,16 +55,25 @@ function App() {
     <div className="App">
       <h1>Typing Game</h1>
       <h4 className="timer">Time Remaining: {timeRemaining}</h4>
-      <div className="typing_text">text here</div>
+      <h4>Word count: {wordCount}</h4>
+      <div className="typing_text">
+        {typingText.map((word, index) => {
+          if (index === activeWordIndex) {
+            return <b>{word} </b>;
+          }
+
+          return <span>{word} </span>;
+        })}
+      </div>
       <textarea
-        onChange={handleChange}
+        onChange={(e) => processInput(e.target.value)}
         value={text}
         disabled={!isTimeRunning}
+        ref={textBoxRef}
       />
       <button onClick={startGame} disabled={isTimeRunning}>
         Start
       </button>
-      <h4>Word count: {wordCount}</h4>
     </div>
   );
 }
