@@ -1,7 +1,10 @@
 import "./App.css";
-import Data from "./components/Data";
-import Word from "./components/word";
 import React, { useState, useEffect, useRef } from "react";
+import Button from "react-bootstrap/Button";
+
+import EndScreen from "./components/EndScreen";
+import Data from "./components/Data";
+import Word from "./components/Word";
 
 function App() {
   const STARTING_TIME = 30;
@@ -15,6 +18,11 @@ function App() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [correctWordCount, setCorrectWordCount] = useState(0);
+
+  //modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const textBoxRef = useRef(null);
 
@@ -49,6 +57,7 @@ function App() {
     setIsTimeRunning(true);
     setTimeRemaining(STARTING_TIME);
     setActiveWordIndex(0);
+    setCorrectWordCount(0);
     setText("");
     setCorrectWordArray([]);
     textBoxRef.current.disabled = false;
@@ -57,6 +66,7 @@ function App() {
 
   function endGame() {
     setIsTimeRunning(false);
+    handleShow();
   }
 
   useEffect(() => {
@@ -73,8 +83,6 @@ function App() {
     <div className="App">
       <h1>Typing Game</h1>
       <h4 className="timer">Time Remaining: {timeRemaining}</h4>
-      <h4>Word count: {activeWordIndex}</h4>
-      <h4>Correct word count: {correctWordCount}</h4>
       <div className={isTimeRunning ? "typing_text" : "typing_text_disabled"}>
         {typingText.map((word, index) => {
           return (
@@ -93,9 +101,17 @@ function App() {
         disabled={!isTimeRunning}
         ref={textBoxRef}
       />
-      <button onClick={startGame} disabled={isTimeRunning}>
+      <Button onClick={startGame} disabled={isTimeRunning}>
         Start
-      </button>
+      </Button>
+      <EndScreen
+        time={STARTING_TIME}
+        wordCount={activeWordIndex}
+        correctWordCount={correctWordCount}
+        show={show}
+        handleClose={handleClose}
+        handleShow={handleShow}
+      />
     </div>
   );
 }
