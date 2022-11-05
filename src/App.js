@@ -3,20 +3,10 @@ import Data from "./components/Data";
 import Word from "./components/word";
 import React, { useState, useEffect, useRef } from "react";
 
-// const getCloud = () =>
-//   "scramble screw thaw pasture tent humor advance stroke true texture"
-//     .split(" ")
-//     .sort(() => (Math.random() > 0.5 ? 1 : -1));
-
-// Word = React.memo(Word);
-
 function App() {
   const STARTING_TIME = 30;
-  // const typingText = "this is the text the user types".split(" ");
 
   const typingText = Data.split(" ");
-
-  // const cloud = useRef(getCloud);
 
   const [text, setText] = useState("");
   const [speed, setSpeed] = useState(0);
@@ -24,6 +14,7 @@ function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
+  const [correctWordCount, setCorrectWordCount] = useState(0);
 
   const textBoxRef = useRef(null);
 
@@ -32,16 +23,23 @@ function App() {
       setText("");
       setActiveWordIndex((index) => index + 1);
 
-      console.log(text);
+      const word = value.trim();
 
-      setCorrectWordArray((data) => {
-        const word = value.trim();
-        const newResult = [...data];
-
-        //not sure what the line of code below does but fixed the issue of setText("") not working
-        newResult[activeWordIndex] = word === typingText[activeWordIndex];
-        return newResult;
-      });
+      if (word === typingText[activeWordIndex]) {
+        setCorrectWordCount((prevCount) => prevCount + 1);
+        setCorrectWordArray((data) => {
+          const newResult = [...data];
+          newResult[activeWordIndex] = true;
+          return newResult;
+        });
+      } else {
+        setCorrectWordArray((data) => {
+          const newResult = [...data];
+          newResult[activeWordIndex] = false;
+          return newResult;
+        });
+      }
+      //not sure what the line of code below does but fixed the issue of setText("") not working
       text.dispatchEvent(new Event("change", { bubbles: true }));
     }
     setText(value);
@@ -76,11 +74,12 @@ function App() {
       <h1>Typing Game</h1>
       <h4 className="timer">Time Remaining: {timeRemaining}</h4>
       <h4>Word count: {activeWordIndex}</h4>
-      <h4>Speed: {speed}</h4>
-      <div className="typing_text">
+      <h4>Correct word count: {correctWordCount}</h4>
+      <div className={isTimeRunning ? "typing_text" : "typing_text_disabled"}>
         {typingText.map((word, index) => {
           return (
             <Word
+              key={index}
               text={word}
               active={index === activeWordIndex}
               correct={correctWordArray[index]}

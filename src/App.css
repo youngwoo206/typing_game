@@ -1,3 +1,4 @@
+
 .App{
     display: flex;
     flex-direction: column;
@@ -9,8 +10,15 @@
     width: 70%;
     height: 25vh;
     margin-bottom: 20px;
+    background-color: white;
 }
-
+.typing_text_disabled{
+    border: 1px black solid;
+    width: 70%;
+    height: 25vh;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+}
 
 .correct{
     font-weight: bold;
@@ -25,3 +33,4 @@
 .active{
     font-weight: bold;
 }
+
