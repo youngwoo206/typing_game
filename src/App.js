@@ -9,8 +9,6 @@ import Word from "./components/Word";
 function App() {
   const STARTING_TIME = 30;
 
-  const typingText = Data.split(" ");
-
   const [text, setText] = useState("");
   const [speed, setSpeed] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
@@ -18,6 +16,12 @@ function App() {
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [correctWordCount, setCorrectWordCount] = useState(0);
+
+  const [typingData, setTypingData] = useState("");
+
+  //text
+  // const typingText = Data.split(" ");
+  const typingText = typingData.split(" ");
 
   //modal
   const [show, setShow] = useState(false);
@@ -78,6 +82,12 @@ function App() {
       endGame();
     }
   }, [timeRemaining, isTimeRunning]);
+
+  useEffect(() => {
+    fetch("http://metaphorpsum.com/paragraphs/1/8")
+      .then((res) => res.text())
+      .then((data) => setTypingData(data));
+  }, []);
 
   return (
     <div className="App">
