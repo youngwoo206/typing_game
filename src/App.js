@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Game from "./pages/Game";
 import Stats from "./pages/Stats";
+import Login from "./pages/Login";
 import "./App.css";
 function App() {
   const STARTING_TIME = 30;
@@ -113,6 +114,7 @@ function App() {
           }
         />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
