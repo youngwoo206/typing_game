@@ -1,8 +1,10 @@
-import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Game from "./pages/Game";
-
+import Stats from "./pages/Stats";
+import "./App.css";
 function App() {
   const STARTING_TIME = 30;
 
@@ -85,22 +87,34 @@ function App() {
   }, [isTimeRunning]);
 
   return (
-    <Game
-      timeRemaining={timeRemaining}
-      isTimeRunning={isTimeRunning}
-      typingText={typingText}
-      activeWordIndex={activeWordIndex}
-      correctWordArray={correctWordArray}
-      text={text}
-      processInput={processInput}
-      textBoxRef={textBoxRef}
-      startGame={startGame}
-      STARTING_TIME={STARTING_TIME}
-      correctWordCount={correctWordCount}
-      show={show}
-      handleClose={handleClose}
-      handleShow={handleShow}
-    />
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Game
+              timeRemaining={timeRemaining}
+              isTimeRunning={isTimeRunning}
+              typingText={typingText}
+              activeWordIndex={activeWordIndex}
+              correctWordArray={correctWordArray}
+              text={text}
+              processInput={processInput}
+              textBoxRef={textBoxRef}
+              startGame={startGame}
+              STARTING_TIME={STARTING_TIME}
+              correctWordCount={correctWordCount}
+              show={show}
+              handleClose={handleClose}
+              handleShow={handleShow}
+            />
+          }
+        />
+        <Route path="/stats" element={<Stats />} />
+      </Routes>
+    </Router>
   );
 }
 

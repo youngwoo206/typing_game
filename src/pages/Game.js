@@ -7,7 +7,6 @@ import Word from "../components/Word";
 function Game(props) {
   return (
     <div className="App">
-      <h1>Typing Game</h1>
       <h4 className="timer">Time Remaining: {props.timeRemaining}</h4>
       <div
         className={props.isTimeRunning ? "typing_text" : "typing_text_disabled"}
