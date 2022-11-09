@@ -1,26 +1,21 @@
 import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
-import Button from "react-bootstrap/Button";
-
-import EndScreen from "./components/EndScreen";
-import Data from "./components/Data";
-import Word from "./components/Word";
+import Navbar from "./components/Navbar";
+import Game from "./pages/Game";
 
 function App() {
   const STARTING_TIME = 30;
 
+  //game logic
   const [text, setText] = useState("");
-  const [speed, setSpeed] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [activeWordIndex, setActiveWordIndex] = useState(0);
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [correctWordCount, setCorrectWordCount] = useState(0);
-
   const [typingData, setTypingData] = useState("");
 
-  //text
-  // const typingText = Data.split(" ");
+  //generate random text
   const typingText = typingData.split(" ");
 
   //modal
@@ -87,42 +82,25 @@ function App() {
     fetch("http://metaphorpsum.com/paragraphs/1/8")
       .then((res) => res.text())
       .then((data) => setTypingData(data));
-  }, []);
+  }, [isTimeRunning]);
 
   return (
-    <div className="App">
-      <h1>Typing Game</h1>
-      <h4 className="timer">Time Remaining: {timeRemaining}</h4>
-      <div className={isTimeRunning ? "typing_text" : "typing_text_disabled"}>
-        {typingText.map((word, index) => {
-          return (
-            <Word
-              key={index}
-              text={word}
-              active={index === activeWordIndex}
-              correct={correctWordArray[index]}
-            />
-          );
-        })}
-      </div>
-      <input
-        value={text}
-        onChange={(e) => processInput(e.target.value)}
-        disabled={!isTimeRunning}
-        ref={textBoxRef}
-      />
-      <Button onClick={startGame} disabled={isTimeRunning}>
-        Start
-      </Button>
-      <EndScreen
-        time={STARTING_TIME}
-        wordCount={activeWordIndex}
-        correctWordCount={correctWordCount}
-        show={show}
-        handleClose={handleClose}
-        handleShow={handleShow}
-      />
-    </div>
+    <Game
+      timeRemaining={timeRemaining}
+      isTimeRunning={isTimeRunning}
+      typingText={typingText}
+      activeWordIndex={activeWordIndex}
+      correctWordArray={correctWordArray}
+      text={text}
+      processInput={processInput}
+      textBoxRef={textBoxRef}
+      startGame={startGame}
+      STARTING_TIME={STARTING_TIME}
+      correctWordCount={correctWordCount}
+      show={show}
+      handleClose={handleClose}
+      handleShow={handleShow}
+    />
   );
 }
 
