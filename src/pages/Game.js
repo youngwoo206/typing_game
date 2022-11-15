@@ -8,6 +8,11 @@ function Game(props) {
   return (
     <div className="App">
       <h4 className="timer">Time Remaining: {props.timeRemaining}</h4>
+      {/* <div className="timer_btn_div">
+        <Button onClick={() => props.setSTARTING_TIME(30)}>30 sec</Button>
+        <Button onClick={() => props.setSTARTING_TIME(60)}>60 sec</Button>
+        <Button onClick={() => props.setSTARTING_TIME(120)}>120 sec</Button>
+      </div> */}
       <div
         className={props.isTimeRunning ? "typing_text" : "typing_text_disabled"}
       >

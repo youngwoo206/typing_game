@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
 import Game from "./pages/Game";
 import Stats from "./pages/Stats";
 import Login from "./pages/Login";
+import Timer from "./components/Timer";
+import Navbar from "./components/Navbar";
 import "./App.css";
+
 function App() {
-  const STARTING_TIME = 30;
+  const [STARTING_TIME, setSTARTING_TIME] = useState(30);
 
   //game logic
   const [text, setText] = useState("");
@@ -110,6 +112,7 @@ function App() {
               show={show}
               handleClose={handleClose}
               handleShow={handleShow}
+              setSTARTING_TIME={setSTARTING_TIME}
             />
           }
         />

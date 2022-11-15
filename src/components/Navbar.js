@@ -7,7 +7,7 @@ import { Context } from "../utils/UserContext";
 import "./Navbar.css";
 
 function Navbar() {
-  const user = useContext(Context);
+  const { user } = useContext(Context);
 
   const [sidebar, setSidebar] = useState(false);
 
