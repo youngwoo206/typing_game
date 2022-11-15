@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Game from "./pages/Game";
 import Stats from "./pages/Stats";
 import Login from "./pages/Login";
-import Timer from "./components/Timer";
 import Navbar from "./components/Navbar";
 import "./App.css";
 

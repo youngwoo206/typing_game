@@ -3,16 +3,21 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import EndScreen from "../components/EndScreen";
 import Word from "../components/Word";
+import Timer from "../components/Timer";
 
 function Game(props) {
   return (
     <div className="App">
-      <h4 className="timer">Time Remaining: {props.timeRemaining}</h4>
+      {/* <h4 className="timer">Time Remaining: {props.timeRemaining}</h4> */}
       {/* <div className="timer_btn_div">
         <Button onClick={() => props.setSTARTING_TIME(30)}>30 sec</Button>
         <Button onClick={() => props.setSTARTING_TIME(60)}>60 sec</Button>
         <Button onClick={() => props.setSTARTING_TIME(120)}>120 sec</Button>
       </div> */}
+      <Timer
+        STARTING_TIME={props.STARTING_TIME}
+        timeRemaining={props.timeRemaining}
+      />
       <div
         className={props.isTimeRunning ? "typing_text" : "typing_text_disabled"}
       >
