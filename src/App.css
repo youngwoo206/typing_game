@@ -5,6 +5,12 @@
     align-items: center;
 }
 
+.background{
+    background-color: var(--background);
+    min-height: 100vh;
+    transition: all .5s;
+}
+
 .typing_text{
     border: 1px black solid;
     width: 70%;

@@ -6,7 +6,7 @@ import { SidebarData } from "./SidebarData";
 import { Context } from "../utils/UserContext";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar(props) {
   const { user } = useContext(Context);
 
   const [sidebar, setSidebar] = useState(false);
@@ -38,6 +38,9 @@ function Navbar() {
             </Link>
           </li>
           {LinkItems}
+          <li className="navbar-toggle">
+            <input type="checkbox" onClick={props.toggleTheme} />
+          </li>
           <li className="navbar-toggle">
             <div className="user-section">
               <p>{user.username}</p>

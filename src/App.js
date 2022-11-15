@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import useLocalStorage from "use-local-storage";
 
 import Game from "./pages/Game";
 import Stats from "./pages/Stats";
@@ -8,6 +9,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 
 function App() {
+  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
   const [STARTING_TIME, setSTARTING_TIME] = useState(30);
 
   //game logic
@@ -72,6 +74,11 @@ function App() {
     handleShow();
   }
 
+  function toggleTheme() {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  }
+
   useEffect(() => {
     if (isTimeRunning && timeRemaining > 0) {
       setTimeout(() => {
@@ -90,34 +97,36 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <Game
-              timeRemaining={timeRemaining}
-              isTimeRunning={isTimeRunning}
-              typingText={typingText}
-              activeWordIndex={activeWordIndex}
-              correctWordArray={correctWordArray}
-              text={text}
-              processInput={processInput}
-              textBoxRef={textBoxRef}
-              startGame={startGame}
-              STARTING_TIME={STARTING_TIME}
-              correctWordCount={correctWordCount}
-              show={show}
-              handleClose={handleClose}
-              handleShow={handleShow}
-              setSTARTING_TIME={setSTARTING_TIME}
-            />
-          }
-        />
-        <Route path="/stats" element={<Stats />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <div className="background" data-theme={theme}>
+        <Navbar toggleTheme={toggleTheme} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Game
+                timeRemaining={timeRemaining}
+                isTimeRunning={isTimeRunning}
+                typingText={typingText}
+                activeWordIndex={activeWordIndex}
+                correctWordArray={correctWordArray}
+                text={text}
+                processInput={processInput}
+                textBoxRef={textBoxRef}
+                startGame={startGame}
+                STARTING_TIME={STARTING_TIME}
+                correctWordCount={correctWordCount}
+                show={show}
+                handleClose={handleClose}
+                handleShow={handleShow}
+                setSTARTING_TIME={setSTARTING_TIME}
+              />
+            }
+          />
+          <Route path="/stats" element={<Stats />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
