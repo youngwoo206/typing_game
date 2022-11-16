@@ -7,21 +7,64 @@ function Timer(props) {
   // const [delayTime, setDelayTime] = useState(3.0);
 
   return (
-    <div className="timer_group">
-      <div className="timer_container">
-        <CircularProgressbar
-          value={props.timeRemaining}
-          maxValue={props.STARTING_TIME}
-          text={
-            props.delayTime ? props.delayTime : props.timeRemaining.toFixed(0)
-          }
-          styles={buildStyles({
-            pathColor: "blue",
-            trailColor: "red",
-          })}
-        />
+    <section className="main">
+      <div className="timer_swiper">
+        <div className="timer_group">
+          <div className="timer_wrapper">
+            <div className="timer_container">
+              <CircularProgressbar
+                value={props.timeRemaining}
+                maxValue={props.STARTING_TIME}
+                text={
+                  props.delayTime
+                    ? props.delayTime
+                    : props.timeRemaining.toFixed(0)
+                }
+                styles={buildStyles({
+                  pathColor: "blue",
+                  trailColor: "red",
+                })}
+              />
+            </div>
+            <div className="timer_container">
+              <CircularProgressbar
+                value={props.timeRemaining}
+                maxValue={props.STARTING_TIME}
+                text={
+                  props.delayTime
+                    ? props.delayTime
+                    : props.timeRemaining.toFixed(0)
+                }
+                styles={buildStyles({
+                  pathColor: "blue",
+                  trailColor: "red",
+                })}
+              />
+            </div>
+            <div className="timer_container">
+              <CircularProgressbar
+                value={props.timeRemaining}
+                maxValue={props.STARTING_TIME}
+                text={
+                  props.delayTime
+                    ? props.delayTime
+                    : props.timeRemaining.toFixed(0)
+                }
+                styles={buildStyles({
+                  pathColor: "blue",
+                  trailColor: "red",
+                })}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="timer_btn_group">
+          <button className="timer_btn">30</button>
+          <button className="timer_btn">30</button>
+          <button className="timer_btn">30</button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
