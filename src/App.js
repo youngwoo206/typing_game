@@ -98,7 +98,7 @@ function App() {
   return (
     <Router>
       <div className="background" data-theme={theme}>
-        <Navbar toggleTheme={toggleTheme} />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Routes>
           <Route
             exact

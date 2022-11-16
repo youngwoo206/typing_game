@@ -34,19 +34,20 @@ function Navbar(props) {
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
             <Link to="#" className="menu-bars">
-              <AiIcons.AiOutlineClose onChange={toggleSidebar} />
+              <AiIcons.AiOutlineClose onClick={toggleSidebar} />
             </Link>
           </li>
           {LinkItems}
           <li className="navbar-toggle">
-            <div className="darkmode-toggle">
+            <div className="nav-text">Toggle Mode:</div>
+            <label className="darkmode-toggle">
               <input
                 className="darkmode-input"
                 type="checkbox"
                 onClick={props.toggleTheme}
               />
               <span className="darkmode-toggle-span" />
-            </div>
+            </label>
           </li>
           <li className="navbar-toggle">
             <div className="user-section">
