@@ -9,7 +9,7 @@ function Timer(props) {
       <CircularProgressbar
         value={props.timeRemaining}
         maxValue={props.STARTING_TIME}
-        text={props.timeRemaining}
+        text={props.timeRemaining.toFixed(0)}
         styles={buildStyles({
           pathColor: "blue",
           trailColor: "red",

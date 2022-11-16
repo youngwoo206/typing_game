@@ -2,7 +2,7 @@ import React from "react";
 
 import Button from "react-bootstrap/Button";
 import EndScreen from "../components/EndScreen";
-import Word from "../components/Word";
+import Word from "../components/word";
 import Timer from "../components/Timer";
 
 function Game(props) {
@@ -38,9 +38,13 @@ function Game(props) {
         disabled={!props.isTimeRunning}
         ref={props.textBoxRef}
       />
-      <Button onClick={props.startGame} disabled={props.isTimeRunning}>
-        Start
-      </Button>
+      {props.isTimeRunning ? (
+        <Button onClick={props.endGame}>Stop</Button>
+      ) : (
+        <Button onClick={props.startGame} disabled={props.startClicked}>
+          Start
+        </Button>
+      )}
       <EndScreen
         time={props.STARTING_TIME}
         wordCount={props.activeWordIndex}

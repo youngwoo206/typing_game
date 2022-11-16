@@ -10,7 +10,7 @@ import "./App.css";
 
 function App() {
   const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
-  const [STARTING_TIME, setSTARTING_TIME] = useState(30);
+  const [STARTING_TIME, setSTARTING_TIME] = useState(10);
 
   //game logic
   const [text, setText] = useState("");
@@ -20,6 +20,7 @@ function App() {
   const [correctWordArray, setCorrectWordArray] = useState([]);
   const [correctWordCount, setCorrectWordCount] = useState(0);
   const [typingData, setTypingData] = useState("");
+  const [startClicked, setStartClicked] = useState(false);
 
   //generate random text
   const typingText = typingData.split(" ");
@@ -59,19 +60,28 @@ function App() {
   }
 
   function startGame() {
-    setIsTimeRunning(true);
-    setTimeRemaining(STARTING_TIME);
-    setActiveWordIndex(0);
-    setCorrectWordCount(0);
-    setText("");
-    setCorrectWordArray([]);
-    textBoxRef.current.disabled = false;
-    textBoxRef.current.focus();
+    setStartClicked(true);
+    setTimeout(() => {
+      setIsTimeRunning(true);
+      setTimeRemaining(STARTING_TIME);
+      setActiveWordIndex(0);
+      setCorrectWordCount(0);
+      setText("");
+      setCorrectWordArray([]);
+      textBoxRef.current.disabled = false;
+      textBoxRef.current.focus();
+    }, 3000);
   }
 
   function endGame() {
     setIsTimeRunning(false);
     handleShow();
+    setStartClicked(false);
+  }
+
+  function forceEndGame() {
+    setStartClicked(false);
+    setIsTimeRunning(false);
   }
 
   function toggleTheme() {
@@ -114,12 +124,15 @@ function App() {
                 processInput={processInput}
                 textBoxRef={textBoxRef}
                 startGame={startGame}
+                endGame={forceEndGame}
                 STARTING_TIME={STARTING_TIME}
                 correctWordCount={correctWordCount}
                 show={show}
                 handleClose={handleClose}
                 handleShow={handleShow}
                 setSTARTING_TIME={setSTARTING_TIME}
+                startClicked={startClicked}
+                setStartClicked={setStartClicked}
               />
             }
           />
