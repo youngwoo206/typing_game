@@ -17,6 +17,7 @@ function Game(props) {
       <Timer
         STARTING_TIME={props.STARTING_TIME}
         timeRemaining={props.timeRemaining}
+        delayTime={props.delayTime}
       />
       <div
         className={props.isTimeRunning ? "typing_text" : "typing_text_disabled"}
@@ -46,6 +47,8 @@ function Game(props) {
         </Button>
       )}
       <EndScreen
+        startClicked={props.startClicked}
+        isTimeRunning={props.isTimeRunning}
         time={props.STARTING_TIME}
         wordCount={props.activeWordIndex}
         correctWordCount={props.correctWordCount}

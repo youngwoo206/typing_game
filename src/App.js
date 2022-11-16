@@ -10,9 +10,13 @@ import "./App.css";
 
 function App() {
   const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
-  const [STARTING_TIME, setSTARTING_TIME] = useState(10);
+
+  //timer consts
+  const [STARTING_TIME, setSTARTING_TIME] = useState(30);
+  const delayTimeValue = 3;
 
   //game logic
+  const [delayTime, setDelayTime] = useState(delayTimeValue);
   const [text, setText] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
@@ -61,6 +65,7 @@ function App() {
 
   function startGame() {
     setStartClicked(true);
+    setDelayTime(delayTimeValue);
     setTimeout(() => {
       setIsTimeRunning(true);
       setTimeRemaining(STARTING_TIME);
@@ -100,6 +105,16 @@ function App() {
   }, [timeRemaining, isTimeRunning]);
 
   useEffect(() => {
+    if (startClicked === true) {
+      if (delayTime > 0) {
+        setTimeout(() => {
+          setDelayTime((time) => time - 1);
+        }, 1000);
+      }
+    }
+  }, [delayTime, startClicked]);
+
+  useEffect(() => {
     fetch("http://metaphorpsum.com/paragraphs/1/8")
       .then((res) => res.text())
       .then((data) => setTypingData(data));
@@ -133,6 +148,7 @@ function App() {
                 setSTARTING_TIME={setSTARTING_TIME}
                 startClicked={startClicked}
                 setStartClicked={setStartClicked}
+                delayTime={delayTime}
               />
             }
           />
