@@ -16,9 +16,11 @@ function Timer(props) {
                 value={props.timeRemaining}
                 maxValue={props.STARTING_TIME}
                 text={
-                  props.delayTime
+                  props.startClicked
                     ? props.delayTime
-                    : props.timeRemaining.toFixed(0)
+                      ? props.delayTime
+                      : props.timeRemaining.toFixed(0)
+                    : props.STARTING_TIME
                 }
                 styles={buildStyles({
                   pathColor: "blue",
@@ -31,9 +33,11 @@ function Timer(props) {
                 value={props.timeRemaining}
                 maxValue={props.STARTING_TIME}
                 text={
-                  props.delayTime
+                  props.startClicked
                     ? props.delayTime
-                    : props.timeRemaining.toFixed(0)
+                      ? props.delayTime
+                      : props.timeRemaining.toFixed(0)
+                    : props.STARTING_TIME
                 }
                 styles={buildStyles({
                   pathColor: "blue",
@@ -61,9 +65,24 @@ function Timer(props) {
           </div>
         </div>
         <div className="timer_btn_group">
-          <button className="timer_btn">30</button>
-          <button className="timer_btn">60</button>
-          <button className="timer_btn">120</button>
+          <button
+            className="timer_btn"
+            onClick={() => props.setSTARTING_TIME(30)}
+          >
+            30
+          </button>
+          <button
+            className="timer_btn"
+            onClick={() => props.setSTARTING_TIME(60)}
+          >
+            60
+          </button>
+          <button
+            className="timer_btn"
+            onClick={() => props.setSTARTING_TIME(120)}
+          >
+            120
+          </button>
         </div>
       </div>
     </section>

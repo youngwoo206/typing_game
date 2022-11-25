@@ -16,9 +16,11 @@ function Game(props) {
       </div> */}
       <Timer
         STARTING_TIME={props.STARTING_TIME}
+        setSTARTING_TIME={props.setSTARTING_TIME}
         timeRemaining={props.timeRemaining}
         delayTime={props.delayTime}
         startClicked={props.startClicked}
+        changeTime={props.changeTime}
       />
       <div
         className={props.isTimeRunning ? "typing_text" : "typing_text_disabled"}
