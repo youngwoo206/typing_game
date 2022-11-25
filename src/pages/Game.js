@@ -1,4 +1,5 @@
 import React from "react";
+import "./Game.css";
 
 import Button from "react-bootstrap/Button";
 import EndScreen from "../components/EndScreen";
@@ -8,12 +9,6 @@ import Timer from "../components/Timer";
 function Game(props) {
   return (
     <div className="App">
-      {/* <h4 className="timer">Time Remaining: {props.timeRemaining}</h4> */}
-      {/* <div className="timer_btn_div">
-        <Button onClick={() => props.setSTARTING_TIME(30)}>30 sec</Button>
-        <Button onClick={() => props.setSTARTING_TIME(60)}>60 sec</Button>
-        <Button onClick={() => props.setSTARTING_TIME(120)}>120 sec</Button>
-      </div> */}
       <Timer
         STARTING_TIME={props.STARTING_TIME}
         setSTARTING_TIME={props.setSTARTING_TIME}
@@ -37,15 +32,22 @@ function Game(props) {
         })}
       </div>
       <input
+        className="input"
         value={props.text}
         onChange={(e) => props.processInput(e.target.value)}
         disabled={!props.isTimeRunning}
         ref={props.textBoxRef}
       />
       {props.isTimeRunning ? (
-        <Button onClick={props.endGame}>Stop</Button>
+        <Button className="start_btn" onClick={props.endGame}>
+          Stop
+        </Button>
       ) : (
-        <Button onClick={props.startGame} disabled={props.startClicked}>
+        <Button
+          className="start_btn"
+          onClick={props.startGame}
+          disabled={props.startClicked}
+        >
           Start
         </Button>
       )}

@@ -1,0 +1,35 @@
+.typing_text{
+    margin-top: 30px;
+    border: 1px black solid;
+    width: 70%;
+    height: 25vh;
+    background-color: white;
+}
+
+.typing_text_disabled{
+    margin-top: 30px;
+    background-color: darkgray;
+    border: 1px black solid;
+    width: 70%;
+    height: 25vh;
+}
+.correct{
+    font-weight: bold;
+    color: green;
+}
+
+.incorrect{
+    font-weight: bold;
+    color: red;
+}
+
+.active{
+    font-weight: bold;
+}
+.input{
+    margin-top: 30px;
+}
+
+.start_btn{
+    margin-top: 30px;
+}
