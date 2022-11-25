@@ -18,6 +18,7 @@ function Game(props) {
         STARTING_TIME={props.STARTING_TIME}
         timeRemaining={props.timeRemaining}
         delayTime={props.delayTime}
+        startClicked={props.startClicked}
       />
       <div
         className={props.isTimeRunning ? "typing_text" : "typing_text_disabled"}

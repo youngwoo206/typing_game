@@ -26,12 +26,13 @@
     background-color: aquamarine;
 }
 
-.timer_wrapper:hover > .timer_container.timer_container:nth-child(1){
+.timer_swiper:hover > .timer_group > .timer_wrapper >.timer_container.timer_container:nth-child(1){
     transform: translateX(-110%);
 }
-.timer_wrapper:hover > .timer_container.timer_container:nth-child(2){
+.timer_swiper:hover > .timer_group> .timer_wrapper >.timer_container.timer_container:nth-child(2){
     transform: translateX(110%);
 }
-.timer_wrapper:hover > .timer_container.timer_container:nth-child(3){
+.timer_swiper:hover > .timer_group> .timer_wrapper >.timer_container.timer_container:nth-child(3){
     transform: translateY(-30%);
 }
+
