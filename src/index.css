@@ -1,9 +1,13 @@
 :root {
-  --background: beige;
+  --background: white;
+  --secondary: #6200ee;
+  --accent: #3700b3;
 }
 
 [data-theme='dark'] {
-  --background: darkgrey;
+  --background: #121212;
+  --secondary: #1f1f1f;
+  --accent: #000000;
 }
 
 
