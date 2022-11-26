@@ -1,9 +1,10 @@
 .navbar {
-    background-color: aqua;
+    background-color: var(--secondary);
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
+    color: white;
 }
 .nav-header{
     margin-left: auto;
@@ -14,10 +15,15 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+    color: white;
+}
+
+.menu-bars:hover{
+    color: var(--accent);
 }
 
 .nav-menu{
-    background-color: aqua;
+    background-color: var(--secondary);
     width: 250px;
     height: 100vh;
     display: flex;
@@ -44,7 +50,7 @@
 
 .nav-text a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 18px;
     width: 95%;
     height: 100%;
@@ -55,7 +61,7 @@
 }
 
 .nav-text a:hover{
-    background-color: blue;
+    background-color: var(--accent);
 }
 
 .navbar-toggle{
@@ -67,12 +73,13 @@
 }
 
 .navbar-toggle{
-    background-color: aqua;
+    background-color: var(--secondary);
     width: 100%;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
+    color: white;
 }
 
 .darkmode-toggle{
@@ -96,7 +103,7 @@
     width: 50px;
     height: 25px;
     border-radius: 100px;   
-    background-color: var(--background);
+    background-color: var(--accent);
     position: relative;
     transition: background-color 0.2s;
 }
