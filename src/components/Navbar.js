@@ -24,6 +24,16 @@ function Navbar(props) {
 
   return (
     <>
+      <div className="accent-bar">
+        <p>Source Code:</p>
+        <a
+          href="https://github.com/youngwoo206/typing_game"
+          target="_blank"
+          rel="noreferrer"
+        >
+          github.com/youngwoo206/typing_game
+        </a>
+      </div>
       <div className="navbar">
         <Link to="#" className="menu-bars">
           <FaIcons.FaBars onClick={toggleSidebar} />

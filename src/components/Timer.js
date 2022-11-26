@@ -2,7 +2,6 @@ import React from "react";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./Timer.css";
-import { useReducer } from "react";
 
 function Timer(props) {
   return (
@@ -30,18 +29,21 @@ function Timer(props) {
         <button
           className="timer_btn"
           onClick={() => props.setSTARTING_TIME(30)}
+          disabled={props.isTimeRunning}
         >
           30
         </button>
         <button
           className="timer_btn"
           onClick={() => props.setSTARTING_TIME(60)}
+          disabled={props.isTimeRunning}
         >
           60
         </button>
         <button
           className="timer_btn"
           onClick={() => props.setSTARTING_TIME(120)}
+          disabled={props.isTimeRunning}
         >
           120
         </button>
