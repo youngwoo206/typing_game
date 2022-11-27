@@ -19,8 +19,9 @@ function Timer(props) {
                 : props.STARTING_TIME
             }
             styles={buildStyles({
-              pathColor: "blue",
-              trailColor: "red",
+              pathColor: "var(--accent)",
+              trailColor: "var(--secondary)",
+              textColor: "var(--timer-text-color)",
             })}
           />
         </div>

@@ -12,7 +12,7 @@ function App() {
   const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light");
 
   //timer consts
-  const [STARTING_TIME, setSTARTING_TIME] = useState(30);
+  const [STARTING_TIME, setSTARTING_TIME] = useState(30.0);
   const delayTimeValue = 3;
 
   //game logic
@@ -99,7 +99,7 @@ function App() {
       setTimeout(() => {
         setTimeRemaining((time) => time - 1);
       }, 1000);
-    } else if (timeRemaining === 0) {
+    } else if (timeRemaining === 0.0) {
       endGame();
     }
   }, [timeRemaining, isTimeRunning]);

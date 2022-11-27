@@ -2,12 +2,14 @@
   --background: white;
   --secondary: #6200ee;
   --accent: #3700b3;
+  --timer-text-color: #6200ee;
 }
 
 [data-theme='dark'] {
-  --background: #121212;
+  --background: #37393f;
   --secondary: #1f1f1f;
   --accent: #000000;
+  --timer-text-color: white;
 }
 
 

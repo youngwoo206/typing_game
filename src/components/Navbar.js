@@ -25,13 +25,14 @@ function Navbar(props) {
   return (
     <>
       <div className="accent-bar">
-        <p>Source Code:</p>
+        <p className="banner-text">Source Code:</p>
         <a
           href="https://github.com/youngwoo206/typing_game"
           target="_blank"
           rel="noreferrer"
+          className="banner-text"
         >
-          github.com/youngwoo206/typing_game
+          github.com/youngwoo206
         </a>
       </div>
       <div className="navbar">
@@ -42,6 +43,7 @@ function Navbar(props) {
       </div>
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
+          <div className="accent-bar"></div>
           <li className="navbar-toggle">
             <Link to="#" className="menu-bars">
               <AiIcons.AiOutlineClose onClick={toggleSidebar} />
