@@ -5,6 +5,7 @@ import useLocalStorage from "use-local-storage";
 import Game from "./pages/Game";
 import Stats from "./pages/Stats";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -154,6 +155,7 @@ function App() {
           />
           <Route path="/stats" element={<Stats />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </Router>
