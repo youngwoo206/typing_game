@@ -6,6 +6,7 @@
     height: 30px;
     justify-content: flex-end;
     width: 100%;
+    transition: 0.5s;
 }
 
 .banner-text{
@@ -23,6 +24,7 @@
     justify-content: start;
     align-items: center;
     color: white;
+    transition: 0.5s;
 }
 .nav-header{
     margin-left: auto;
@@ -49,12 +51,12 @@
     position: fixed;
     top: 0;
     left: -270px;
-    transition: 850ms;
+    transition: 0.5s;
 }
 
 .nav-menu.active{
     left: -32px;
-    transition: 350ms;
+    transition: 0.5s;
 }
 
 .nav-text{
@@ -64,6 +66,7 @@
     padding: 8px 0px 8px 24px;
     list-style: none;
     height: 60px;
+    transition: 0.5s;
 }
 
 .nav-text a {
@@ -98,6 +101,7 @@
     justify-content: start;
     align-items: center;
     color: white;
+    transition: 0.5s;
 }
 
 .darkmode-toggle{
@@ -123,7 +127,7 @@
     border-radius: 100px;   
     background-color: var(--accent);
     position: relative;
-    transition: background-color 0.2s;
+    /* transition: background-color 0.2s; */
 }
 
 .darkmode-toggle-span::before{

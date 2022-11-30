@@ -28,21 +28,27 @@ function Timer(props) {
       </div>
       <div className="timer_btn_group">
         <button
-          className="timer_btn"
+          className={
+            props.STARTING_TIME === 30 ? "active_timer_btn" : "timer_btn"
+          }
           onClick={() => props.setSTARTING_TIME(30)}
           disabled={props.isTimeRunning}
         >
           30
         </button>
         <button
-          className="timer_btn"
+          className={
+            props.STARTING_TIME === 60 ? "active_timer_btn" : "timer_btn"
+          }
           onClick={() => props.setSTARTING_TIME(60)}
           disabled={props.isTimeRunning}
         >
           60
         </button>
         <button
-          className="timer_btn"
+          className={
+            props.STARTING_TIME === 120 ? "active_timer_btn" : "timer_btn"
+          }
           onClick={() => props.setSTARTING_TIME(120)}
           disabled={props.isTimeRunning}
         >

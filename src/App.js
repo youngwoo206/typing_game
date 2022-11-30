@@ -115,7 +115,7 @@ function App() {
   }, [delayTime, startClicked]);
 
   useEffect(() => {
-    fetch("http://metaphorpsum.com/paragraphs/1/8")
+    fetch("http://metaphorpsum.com/paragraphs/1/30")
       .then((res) => res.text())
       .then((data) => setTypingData(data));
   }, [isTimeRunning]);

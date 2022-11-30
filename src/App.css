@@ -9,6 +9,7 @@
     background-color: var(--background);
     min-height: 100vh;
     transition: all .5s;
+    transition: 0.5s;
 }
 
 

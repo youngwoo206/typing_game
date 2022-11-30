@@ -4,14 +4,20 @@
     width: 70%;
     height: 25vh;
     background-color: white;
+    border-radius: 20px;
+    overflow: auto ;
+    font-size: larger;
 }
 
 .typing_text_disabled{
     margin-top: 30px;
-    background-color: darkgray;
-    border: 1px black solid;
+    background-color: #f8f8f8;
+    border: 1px #d0d0d0 solid;
     width: 70%;
     height: 25vh;
+    border-radius: 20px;
+    overflow: auto ;
+    font-size: larger;
 }
 .correct{
     font-weight: bold;
@@ -31,5 +37,12 @@
 }
 
 .start_btn{
-    margin-top: 30px;
+    margin-top: 20px;
+    background-color: var(--secondary);
+    border: none;
+    font-size: larger;
+}
+
+.start_btn:hover{
+    background-color: var(--accent);
 }

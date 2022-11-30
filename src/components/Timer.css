@@ -5,7 +5,7 @@
 }
 
 .timer_group{
-    width: 240px;
+    width: 300px;
     display: flex;
     justify-content: center;
 }
@@ -24,10 +24,20 @@
 }
 
 .timer_btn{
-    width: 50px;
+    width: 80px;
     border-radius: 10px;
+    border: 1px solid;
     margin-left: auto;
     margin-right: auto;
+}
+
+.active_timer_btn{
+    width: 80px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--accent2);
 }
 
 
