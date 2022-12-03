@@ -6,6 +6,7 @@ function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+
   return (
     <Container
       className="d-flex mt-5 justify-content-center"
